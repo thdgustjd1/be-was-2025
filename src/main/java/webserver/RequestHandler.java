@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 public class RequestHandler implements Runnable {
     private static final Logger logger = LoggerFactory.getLogger(RequestHandler.class);
-    private final String STATIC_FILE_DIRECTORY_PATH = "src/main/resources/static";
+    private static final String STATIC_FILE_DIRECTORY_PATH = "src/main/resources/static";
 
     private Socket connection;
 
@@ -76,7 +76,7 @@ public class RequestHandler implements Runnable {
             }
             return fileBytes;
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             return null;
         }
     }
